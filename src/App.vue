@@ -8,7 +8,7 @@ const formValues = ref({});
 function setcont(){
   const content = document.querySelector("#widget-content").innerHTML;
   console.log(content);
-
+  var SDK = require('blocksdk');
   var sdk = new SDK();
 
   console.log('SDK Object:', sdk);

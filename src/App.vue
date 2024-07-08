@@ -4,12 +4,13 @@ import sdk from 'blocksdk';
 
 const formValues = ref({});
 
+console.log('SDK Object:', sdk);
 
 function setcont(){
   const content = document.querySelector("#widget-content").innerHTML;
   console.log(content);
 
-  console.log('SDK Object:', sdk);
+  
   sdk.setContent(content);
   console.log('SDK Object Theni :', sdk);
 }

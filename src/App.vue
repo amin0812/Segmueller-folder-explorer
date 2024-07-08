@@ -1,6 +1,6 @@
 <script setup>
 import { onUpdated, ref } from 'vue';
-import {sdk} from 'blocksdk';
+import sdk from 'blocksdk';
 
 const formValues = ref({});
 
@@ -8,8 +8,6 @@ const formValues = ref({});
 function setcont(){
   const content = document.querySelector("#widget-content").innerHTML;
   console.log(content);
-  var SDK = require('blocksdk');
-  var sdk = new SDK();
 
   console.log('SDK Object:', sdk);
   sdk.setContent(content);

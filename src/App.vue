@@ -5,10 +5,12 @@ import {sdk} from 'blocksdk';
 const formValues = ref({});
 
 
-function setSdk(){
+function setcont(){
   const content = document.querySelector("#widget-content").innerHTML;
   console.log(content);
+  console.log('SDK Object:', sdk);
   sdk.setContent(content);
+  console.log('SDK Object Theni :', sdk);
 }
 /*sdk.getContent(function (content) {
   content = document.querySelector("#widget-content").innerHTML;;
@@ -41,7 +43,7 @@ const vueform = ref({
 
 })
 
-onUpdated(setSdk);
+onUpdated(setcont);
 
 
 </script>

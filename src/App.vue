@@ -8,6 +8,9 @@ const formValues = ref({});
 function setcont(){
   const content = document.querySelector("#widget-content").innerHTML;
   console.log(content);
+
+  var sdk = new SDK();
+
   console.log('SDK Object:', sdk);
   sdk.setContent(content);
   console.log('SDK Object Theni :', sdk);

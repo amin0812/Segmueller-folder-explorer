@@ -1,9 +1,12 @@
 <script setup>
-import { onUpdated, ref } from 'vue'
+import { onUpdated, ref } from 'vue';
+import sdk from 'blocksdk';
+
 const formValues = ref({});
 function setContent(){
   const content = document.querySelector("#widget-content").innerHTML;
-  console.log(content);
+  //console.log(content);
+  sdk.setContent(content);
 }
 
 const vueform = ref({

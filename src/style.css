@@ -78,6 +78,6 @@ button:focus-visible {
   }
 }
 
-/*#widget-content{
+#widget-content{
   display: none;
-}*/
+}

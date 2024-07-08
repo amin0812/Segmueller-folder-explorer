@@ -8,7 +8,7 @@ const formValues = ref({});
 function setSdk(){
   const content = document.querySelector("#widget-content").innerHTML;
   console.log(content);
-  sdk.getContent(sdk.setContent(content));
+  sdk.setContent(content);
 }
 /*sdk.getContent(function (content) {
   content = document.querySelector("#widget-content").innerHTML;;

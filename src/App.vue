@@ -1,6 +1,6 @@
 <script setup>
 import { onUpdated, ref } from 'vue';
-import sdk from 'blocksdk';
+import {sdk} from 'blocksdk';
 
 const formValues = ref({});
 

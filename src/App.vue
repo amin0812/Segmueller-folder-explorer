@@ -1,10 +1,11 @@
 <script setup>
 import { onUpdated, ref } from 'vue';
-import sdk from 'blocksdk';
+import sdkclass from 'blocksdk';
+const sdk = new sdkclass();
 
 const formValues = ref({});
 
-console.log('SDK Object:', sdk);
+
 
 function setcont(){
   const content = document.querySelector("#widget-content").innerHTML;
@@ -12,7 +13,7 @@ function setcont(){
 
   
   sdk.setContent(content);
-  console.log('SDK Object Theni :', sdk);
+  console.log(sdk);
 }
 /*sdk.getContent(function (content) {
   content = document.querySelector("#widget-content").innerHTML;;

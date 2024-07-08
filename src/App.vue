@@ -3,11 +3,19 @@ import { onUpdated, ref } from 'vue';
 import sdk from 'blocksdk';
 
 const formValues = ref({});
-function setContent(){
+
+
+function setSdk(){
   const content = document.querySelector("#widget-content").innerHTML;
   //console.log(content);
   sdk.setContent(content);
 }
+/*sdk.getContent(function (content) {
+  content = document.querySelector("#widget-content").innerHTML;;
+  sdk.setContent(content, function (setContent) {
+    // block content is now its original content + '.'
+  });
+});*/
 
 const vueform = ref({
 
@@ -33,7 +41,7 @@ const vueform = ref({
 
 })
 
-onUpdated(setContent);
+onUpdated(setSdk);
 
 
 </script>

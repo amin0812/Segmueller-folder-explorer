@@ -1,5 +1,5 @@
 <script setup>
-import Categories from './components/Categories.vue';
+import Folders from './components/Folders.vue';
 import Explorer from './classes/Explorer';
 
 const props = defineProps(["server"])
@@ -12,7 +12,7 @@ const explorer = new Explorer(props.server);
     <ul>
       <li>
         Root:
-        <Categories  :categories="explorer.folders" />
+        <Folders  :folders="explorer.folders" />
       </li>
     </ul>
   </template>

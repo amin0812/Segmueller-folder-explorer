@@ -33,6 +33,9 @@ const vueform = ref({
 
     content: {
       type: 'editor',
+    },
+    customField :{
+      type : CustomElement
     }
 
   }

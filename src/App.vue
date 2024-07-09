@@ -32,11 +32,8 @@ const vueform = ref({
     },
 
     content: {
-      type: 'text',
-    }/*,
-    elem: {
-      type: CustomElement,
-    }*/
+      type: 'editor',
+    }
 
   }
 
@@ -47,10 +44,18 @@ onUpdated(setcont);
 
 </script>
 
+
 <template>
   <Vueform v-bind="vueform"/>
+
   <div id="widget-content">
-    <h1>{{ formValues.headline }}</h1>
+    <h1> {{ formValues.headline }}</h1>
     <div v-html="formValues.content"></div>
+    <div v-html="formValues.elem"></div>
+
+    
+    
   </div>
+
+
 </template>

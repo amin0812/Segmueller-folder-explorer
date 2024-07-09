@@ -33,10 +33,10 @@ const vueform = ref({
 
     content: {
       type: 'text',
-    },
+    }/*,
     elem: {
       type: CustomElement,
-    }
+    }*/
 
   }
 

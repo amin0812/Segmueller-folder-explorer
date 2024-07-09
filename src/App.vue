@@ -3,15 +3,16 @@ import { onUpdated, ref } from 'vue';
 import sdkclass from 'blocksdk';
 const sdk = new sdkclass();
 
+
 const formValues = ref({});
 
 
 
-function setcont(){
+function setcont() {
   const content = document.querySelector("#widget-content").innerHTML;
   console.log(content);
 
-  
+
   sdk.setContent(content);
   console.log(sdk);
 }
@@ -48,7 +49,6 @@ const vueform = ref({
 
 onUpdated(setcont);
 
-
 </script>
 
 
@@ -58,6 +58,4 @@ onUpdated(setcont);
     <h1> {{ formValues.headline }}</h1>
     <div v-html="formValues.content"></div>
   </div>
-
-
 </template>

@@ -1,18 +1,15 @@
-import Folder from "./types/Folder";
-import FolderStructure from "./types/FolderStructure";
-import Product from "./types/Product";
-import MockGenerator from "./classes/MockGenerator";
+import Folder from "../types/Folder";
+import Product from "../types/Product";
+import MockGenerator from "./MockGenerator";
 
 const mockGenerator = new MockGenerator();
 
 export default class Explorer {
-    public folderStructure: FolderStructure
     public folders: Array<Folder>
     public server: string
 
     public constructor(server: string) {
-        this.folders = this.getFolders()
-        this.folderStructure = this.parseFolderStructure(this.folders);
+        this.folders = this.parseFolderStructure(this.getFolders())
         this.server = server
     }
 
@@ -31,11 +28,11 @@ export default class Explorer {
         return mockGenerator.randomCategories(10);
     }
 
-    private parseFolderStructure(Folders: Array<Folder>, parentCategroyId?: string): FolderStructure {
-        return Folders.filter(f => f.parentCategroyId == parentCategroyId).reduce((acc: FolderStructure, curr: Folder) => {
-            acc[curr.id] = { ...curr, childCategories: this.parseFolderStructure(Folders, curr.id) };
+    private parseFolderStructure(Folders: Array<Folder>, parentCategroyId?: string): Array<Folder> {
+        return Folders.filter(f => f.parentCategroyId == parentCategroyId).reduce((acc: Array<Folder>, curr: Folder) => {
+            acc.push( { ...curr, childCategories: this.parseFolderStructure(Folders, curr.id) });
             return acc;
-        }, {});
+        }, []);
     }
 }
 

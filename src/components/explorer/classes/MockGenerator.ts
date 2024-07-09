@@ -36,19 +36,50 @@ export default class MockGenerator {
         return products;
     }
 
-    public randomCategory() : Folder {
-        return {
-            id: this.randomString(4),
-            parentCategroyId: this.randomString(4)
-        }
-    }
+   
 
     public randomCategories(count : number) : Array<Folder> {
-        const categories : Array<Folder> = [];
-        while(count > 0) {
-            categories.push(this.randomCategory());
-            count --;
-        }
-        return categories;
+        return [
+            {
+              id: "1",
+              parentCategroyId: undefined
+            },
+            {
+              id: "2",
+              parentCategroyId: "1"
+            },
+            {
+              id: "3",
+              parentCategroyId: "1"
+            },
+            {
+              id: "4",
+              parentCategroyId: undefined
+            },
+            {
+              id: "5",
+              parentCategroyId: "4"
+            },
+            {
+              id: "6",
+              parentCategroyId: "4"
+            },
+            {
+              id: "7",
+              parentCategroyId: "4"
+            },
+            {
+              id: "8",
+              parentCategroyId: "6"
+            },
+            {
+              id: "9",
+              parentCategroyId: "6"
+            },
+            {
+              id: "10",
+              parentCategroyId: "6"
+            },
+          ]
     }
 }

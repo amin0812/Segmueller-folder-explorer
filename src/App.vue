@@ -1,6 +1,7 @@
 <script setup>
 import { onUpdated, ref } from 'vue';
 import sdkclass from 'blocksdk';
+import CustomElement from './components/CustomeElement.vue';
 const sdk = new sdkclass();
 
 
@@ -11,17 +12,10 @@ const formValues = ref({});
 function setcont() {
   const content = document.querySelector("#widget-content").innerHTML;
   console.log(content);
-
-
   sdk.setContent(content);
   console.log(sdk);
 }
-/*sdk.getContent(function (content) {
-  content = document.querySelector("#widget-content").innerHTML;;
-  sdk.setContent(content, function (setContent) {
-    // block content is now its original content + '.'
-  });
-});*/
+
 
 const vueform = ref({
 
@@ -41,6 +35,9 @@ const vueform = ref({
 
     content: {
       type: 'editor',
+    },
+    customField: {
+      type: CustomElement
     }
 
   }
@@ -53,9 +50,17 @@ onUpdated(setcont);
 
 
 <template>
-  <Vueform v-bind="vueform" />
+  <Vueform v-bind="vueform">
+    <CustomElement name="custom" rules="email" />
+
+  </Vueform>
+
   <div id="widget-content">
     <h1> {{ formValues.headline }}</h1>
     <div v-html="formValues.content"></div>
+    <div v-html="formValues.elem"></div>
+
+
+
   </div>
 </template>

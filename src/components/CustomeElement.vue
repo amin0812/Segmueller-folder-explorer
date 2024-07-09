@@ -34,13 +34,6 @@ export default defineElement({
         <template #element>
             <Explorer server="test"/>
         </template>
-
-        <!-- Default element slots -->
-        <template v-for="(component, slot) in elementSlots" #[slot]>
-            <slot :name="slot" :el$="el$">
-                <component :is="component" :el$="el$" />
-            </slot>
-        </template>
     </ElementLayout>
 </template>
 

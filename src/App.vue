@@ -34,8 +34,8 @@ const vueform = ref({
     content: {
       type: 'editor',
     },
-    customField :{
-      type : CustomElement
+    customField: {
+      type: CustomElement
     }
 
   }
@@ -49,15 +49,18 @@ onUpdated(setcont);
 
 
 <template>
-  <Vueform v-bind="vueform"/>
+  <Vueform v-bind="vueform">
+    <CustomElement name="custom" rules="email" />
+
+  </Vueform>
 
   <div id="widget-content">
     <h1> {{ formValues.headline }}</h1>
     <div v-html="formValues.content"></div>
     <div v-html="formValues.elem"></div>
 
-    
-    
+
+
   </div>
 
 

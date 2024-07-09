@@ -4,7 +4,9 @@ import sdkclass from 'blocksdk';
 import CustomElement from './components/CustomeElement.vue';
 const sdk = new sdkclass();
 
+
 const formValues = ref({});
+
 
 
 function setcont() {
@@ -44,7 +46,6 @@ const vueform = ref({
 
 onUpdated(setcont);
 
-
 </script>
 
 
@@ -62,6 +63,4 @@ onUpdated(setcont);
 
 
   </div>
-
-
 </template>

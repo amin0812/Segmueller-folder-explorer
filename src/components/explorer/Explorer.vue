@@ -1,18 +1,18 @@
+<template>
+  <Folders :folders="explorer.folders" :explorer="explorer" @folderSelected="forwardFolderSelected"/>
+</template>
+
 <script setup>
 import Folders from './components/Folders.vue';
 import Explorer from './classes/Explorer';
+import { defineProps, defineEmits } from 'vue';
 
-const props = defineProps(["server"])
-
+const props = defineProps(["server"]);
 const explorer = new Explorer(props.server);
 
-</script>
+const emit = defineEmits(['folderSelected']);
 
-<template>
-    <ul>
-      <li>
-        Root:
-        <Folders  :folders="explorer.folders" />
-      </li>
-    </ul>
-  </template>
+function forwardFolderSelected(folderId) {
+  emit('folderSelected', folderId);
+}
+</script>

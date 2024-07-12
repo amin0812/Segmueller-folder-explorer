@@ -1,7 +1,7 @@
 <script setup>
 import { onUpdated, ref } from 'vue';
 import sdkclass from 'blocksdk';
-import CustomElement from './components/CustomeElement.vue';
+
 const sdk = new sdkclass();
 
 
@@ -37,9 +37,8 @@ const vueform = ref({
       type: 'editor',
     },
     customField: {
-      type: CustomElement
+      type: 'custom',
     }
-
   }
 
 })
@@ -50,10 +49,7 @@ onUpdated(setcont);
 
 
 <template>
-  <Vueform v-bind="vueform">
-    <CustomElement name="custom" rules="email" />
-
-  </Vueform>
+  <Vueform v-bind="vueform"/>
 
   <div id="widget-content">
     <h1> {{ formValues.headline }}</h1>

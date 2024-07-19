@@ -1,5 +1,6 @@
 export default interface Folder {
-    id: string
-    parentCategroyId?: string
-    childCategories?: Array<Folder>
+    Id: string
+    Name: string
+    ParentCategroyId?: string
+    ChildCategories?: Array<Folder>
 }

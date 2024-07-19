@@ -1,8 +1,8 @@
 <template>
     <ul>
-        <li v-for="folder in folders" :key="folder.id">
-            {{ folder.id }}
-                <Folders v-if="folder.childCategories.length" :folders="folder.childCategories"/>
+        <li v-for="folder in folders" :key="folder.Id">
+            {{ folder.Name }}
+                <Folders v-if="folder.ChildCategories.length" :folders="folder.ChildCategories"/>
         </li>
     </ul>
 </template>

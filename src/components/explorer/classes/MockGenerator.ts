@@ -4,82 +4,92 @@ import Product from "../types/Product";
 const characters = "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNM"
 
 export default class MockGenerator {
-    public randomInt(min: number, max: number): number {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    }
+  public randomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
 
-    public randomString(length: number): string {
-        let str = "";
-        while (length > 0) {
-            let index = this.randomInt(0, characters.length - 1);
-            str += characters[index];
-            length--;
-        }
-        return str;
+  public randomString(length: number): string {
+    let str = "";
+    while (length > 0) {
+      let index = this.randomInt(0, characters.length - 1);
+      str += characters[index];
+      length--;
     }
+    return str;
+  }
 
-    public randomProduct(): Product {
-        
-        return {
-            id: this.randomString(4),
-            name: this.randomString(10),
-            categoryId: this.randomString(4)
-        }
+  public randomProduct(): Product {
+
+    return {
+      Id: this.randomString(4),
+      Name: this.randomString(10),
+      CategoryId: this.randomString(4)
     }
+  }
 
-    public randomProducts(count: number): Array<Product> {
-        const products: Array<Product> = [];
-        while (count > 0) {
-            products.push(this.randomProduct());
-            count--;
-        }
-        return products;
+  public randomProducts(count: number): Array<Product> {
+    const products: Array<Product> = [];
+    while (count > 0) {
+      products.push(this.randomProduct());
+      count--;
     }
+    return products;
+  }
 
-   
 
-    public randomCategories(count : number) : Array<Folder> {
-        return [
-            {
-              id: "1",
-              parentCategroyId: undefined
-            },
-            {
-              id: "2",
-              parentCategroyId: "1"
-            },
-            {
-              id: "3",
-              parentCategroyId: "1"
-            },
-            {
-              id: "4",
-              parentCategroyId: undefined
-            },
-            {
-              id: "5",
-              parentCategroyId: "4"
-            },
-            {
-              id: "6",
-              parentCategroyId: "4"
-            },
-            {
-              id: "7",
-              parentCategroyId: "4"
-            },
-            {
-              id: "8",
-              parentCategroyId: "6"
-            },
-            {
-              id: "9",
-              parentCategroyId: "6"
-            },
-            {
-              id: "10",
-              parentCategroyId: "6"
-            },
-          ]
-    }
+
+  public randomCategories(count: number): Array<Folder> {
+    return [
+      {
+        Id: "1",
+        Name: "Category e",
+        ParentCategroyId: undefined
+      },
+      {
+        Id: "2",
+        Name: "Category qw",
+        ParentCategroyId: "1"
+      },
+      {
+        Id: "3",
+        Name: "Category eq",
+        ParentCategroyId: "1"
+      },
+      {
+        Id: "4",
+        Name: "Category 12",
+        ParentCategroyId: undefined
+      },
+      {
+        Id: "5",
+        Name: "Category gerfg",
+        ParentCategroyId: "4"
+      },
+      {
+        Id: "6",
+        Name: "Category wer",
+        ParentCategroyId: "4"
+      },
+      {
+        Id: "7",
+        Name: "Category wefr",
+        ParentCategroyId: "4"
+      },
+      {
+        Id: "8",
+        Name: "Category twer",
+        ParentCategroyId: "6"
+      },
+      {
+        Id: "9",
+        Name: "Category werdf",
+        ParentCategroyId: "6"
+      },
+      {
+        Id: "10",
+        Name: "Category fdfds",
+        ParentCategroyId: "6"
+      },
+    ]
+  }
 }

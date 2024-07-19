@@ -29,8 +29,8 @@ export default class Explorer {
     }
 
     private parseFolderStructure(Folders: Array<Folder>, parentCategroyId?: string): Array<Folder> {
-        return Folders.filter(f => f.parentCategroyId == parentCategroyId).reduce((acc: Array<Folder>, curr: Folder) => {
-            acc.push( { ...curr, childCategories: this.parseFolderStructure(Folders, curr.id) });
+        return Folders.filter(f => f.ParentCategroyId == parentCategroyId).reduce((acc: Array<Folder>, curr: Folder) => {
+            acc.push( { ...curr, ChildCategories: this.parseFolderStructure(Folders, curr.Id) });
             return acc;
         }, []);
     }

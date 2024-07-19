@@ -18,19 +18,19 @@ export default class MockGenerator {
     return str;
   }
 
-  public randomProduct(): Product {
+  public randomProduct(categoryId: string): Product {
 
     return {
       Id: this.randomString(4),
       Name: this.randomString(10),
-      CategoryId: this.randomString(4)
+      CategoryId: categoryId
     }
   }
 
-  public randomProducts(count: number): Array<Product> {
+  public randomProducts(count: number, categoryId: string): Array<Product> {
     const products: Array<Product> = [];
     while (count > 0) {
-      products.push(this.randomProduct());
+      products.push(this.randomProduct(categoryId));
       count--;
     }
     return products;

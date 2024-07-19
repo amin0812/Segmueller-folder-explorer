@@ -25,7 +25,7 @@ export default class Explorer {
 
     private getFolders(): Array<Folder> {
         //TODO: replace mock with api call when api exists
-        return mockGenerator.randomCategories(10);
+        return mockGenerator.randomCategories();
     }
 
     private parseFolderStructure(Folders: Array<Folder>, parentCategroyId?: string): Array<Folder> {

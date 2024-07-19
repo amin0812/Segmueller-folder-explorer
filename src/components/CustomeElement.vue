@@ -1,15 +1,11 @@
-<!-- CustomElement.vue -->
-
 <script>
-import { ref } from 'vue'
-import { defineElement } from '@vueform/vueform'
-import Explorer from './explorer/Explorer.vue';
-
-
+import { ref } from 'vue';
+import { defineElement } from '@vueform/vueform';
+import Explorer from '../components/explorer/Explorer.vue';
 
 export default defineElement({
     name: 'CustomElement',
-    components : {Explorer : Explorer},
+    components: { Explorer },
     setup(props, { element }) {
         const defaultClasses = ref({
             container: '', // added automatically to the element's outermost DOM in ElementLayout
@@ -19,20 +15,28 @@ export default defineElement({
                 classes.input,
                 isDanger ? classes.input_danger : null,
             ])
-        })
+        });
+
+        const selectedFolderId = ref('');
+
+        function handleFolderSelected(folderId) {
+            selectedFolderId.value = folderId;
+        }
 
         return {
             defaultClasses,
-        }
+            selectedFolderId,
+            handleFolderSelected,
+        };
     }
-})
+});
 </script>
-
 
 <template>
     <ElementLayout>
         <template #element>
-            <Explorer server="test"/>
+            <input v-model="selectedFolderId" :class="defaultClasses.input" />
+            <Explorer server="test" @folderSelected="handleFolderSelected" />
         </template>
     </ElementLayout>
 </template>

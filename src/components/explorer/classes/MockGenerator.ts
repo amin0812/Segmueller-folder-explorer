@@ -38,7 +38,7 @@ export default class MockGenerator {
 
 
 
-  public randomCategories(count: number): Array<Folder> {
+  public randomCategories(): Array<Folder> {
     return [
       {
         Id: "1",

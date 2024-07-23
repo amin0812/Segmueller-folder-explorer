@@ -1,5 +1,11 @@
 <template>
   <Folders :folders="explorer.folders" :explorer="explorer" @folderSelected="forwardFolderSelected" />
+  <li v-for="product in explorer.products.value" :key="product.Id">
+    <span class="product-item">
+        <i class="las la-box"></i>
+        {{ product.Name }}           
+    </span>
+</li>
 </template>
 
 <script setup>

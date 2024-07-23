@@ -7,12 +7,6 @@
                 {{ folder.Name }}
             </span>
             <ul v-show="folder.Id == openFolderId">
-                <li v-for="product in explorer.products.value.filter(p => p.CategoryId == folder.Id)" :key="product.Id">
-                    <span class="product-item">
-                        <i class="las la-box"></i>
-                        {{ product.Name }}           
-                    </span>
-                </li>
                 <Folders v-if="folder && folder.ChildCategories && folder.ChildCategories.length && folder.Id == openFolderId"
                     :folders="folder.ChildCategories" :explorer="explorer"
                     @folderSelected="$emit('folderSelected', $event)" />

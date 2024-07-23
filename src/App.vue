@@ -15,6 +15,10 @@ function setcont() {
   sdk.setContent(content);
   console.log(sdk);
 }
+function filteredList() {
+          return formValues.filter((search) =>
+          search.toLowerCase().includes(input.value.toLowerCase())
+          );}
 
 
 const vueform = ref({
@@ -28,20 +32,27 @@ const vueform = ref({
       content: 'Custom Widget',
       tag: 'h1'
     },
-
-    headline: {
+    search: {
       type: 'text',
-    },
+      placeholder: 'Search...',
+      onChange: (value) => {
+        formValues.value.searchQuery = value;
+          console.log('Search query:', value);
+        }
+      },
 
-    content: {
-      type: 'editor',
-    },
-    customField: {
-      type: 'custom',
+      headline: {
+        type: 'text',
+      },
+      content: {
+        type: 'editor',
+      },
+      customField: {
+        type: 'custom',
+      }
     }
-  }
 
-})
+  })
 
 onUpdated(setcont);
 
@@ -49,14 +60,15 @@ onUpdated(setcont);
 
 
 <template>
-  <Vueform v-bind="vueform"/>
+  <Vueform v-bind="vueform" />
+
+
 
   <div id="widget-content">
     <h1> {{ formValues.headline }}</h1>
     <div v-html="formValues.content"></div>
     <div v-html="formValues.elem"></div>
-
-
-
   </div>
+
+
 </template>

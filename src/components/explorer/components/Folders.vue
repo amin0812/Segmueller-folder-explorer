@@ -3,24 +3,24 @@
         <li v-for="folder in folders" :key="folder.Id">
             <span @click="loadProducts(folder.Id)" class="folder-item">
                 <i v-if="folder.Id == openFolderId" class="las la-folder-open"></i>
-                <i v-if="folder.Id != openFolderId" class="las la-folder"></i>                
+                <i v-if="folder.Id != openFolderId" class="las la-folder"></i>
                 {{ folder.Name }}
             </span>
-            <ul>
+            <ul v-show="folder.Id == openFolderId">
                 <li v-for="product in explorer.products.value.filter(p => p.CategoryId == folder.Id)" :key="product.Id">
                     <span class="product-item">
                         <i class="las la-box"></i>
                         {{ product.Name }}           
                     </span>
-                    
                 </li>
+                <Folders v-if="folder && folder.ChildCategories && folder.ChildCategories.length && folder.Id == openFolderId"
+                    :folders="folder.ChildCategories" :explorer="explorer"
+                    @folderSelected="$emit('folderSelected', $event)" />
             </ul>
-            <Folders v-if="folder && folder.ChildCategories && folder.ChildCategories.length &&  folder.Id == openFolderId"
-                :folders="folder.ChildCategories" :explorer="explorer"
-                @folderSelected="$emit('folderSelected', $event)" />
         </li>
     </ul>
 </template>
+
 <script>
 import { ref } from 'vue';
 export default {
@@ -46,7 +46,32 @@ export default {
 <style scoped>
 .folder-list {
     list-style-type: none;
-    text-align: center;
+    padding-left: 20px;
+    position: relative;
+}
+
+.folder-list:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: #ccc;
+}
+
+.folder-list > li {
+    position: relative;
+}
+
+.folder-list > li:before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -20px;
+    height: 1px;
+    width: 20px;
+    background: #ccc;
 }
 
 .folder-item {
@@ -59,11 +84,11 @@ export default {
     display: flex;
     align-items: center;
     max-width: 200px;
+    position: relative;
 }
 
 .folder-item i {
     margin-right: 8px;
-    /* Add some space between the icon and the text */
 }
 
 .folder-item:hover {
@@ -79,7 +104,17 @@ export default {
 .folder-list>li>ul {
     padding-left: 20px;
     list-style-type: none;
-    /* Ensure nested lists also don't have bullet points */
+    position: relative;
+}
+
+.folder-list>li>ul:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -20px;
+    width: 1px;
+    background: #ccc;
 }
 
 .product-item {
@@ -92,6 +127,17 @@ export default {
     display: flex;
     align-items: center;
     max-width: 200px;
-    margin-left: 50px;
+    margin-left: 20px;
+    position: relative;
+}
+
+.product-item:before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -20px;
+    height: 1px;
+    width: 20px;
+    background: #ccc;
 }
 </style>

@@ -1,11 +1,15 @@
 <template>
-  <Folders :folders="explorer.folders" :explorer="explorer" @folderSelected="forwardFolderSelected" />
-  <li v-for="product in explorer.products.value" :key="product.Id">
-    <span class="product-item">
-        <i class="las la-box"></i>
-        {{ product.Name }}           
-    </span>
-</li>
+  <div class="container">
+    <Folders :folders="explorer.folders" :explorer="explorer" @folderSelected="forwardFolderSelected" />
+    <ul class="product-list">
+      <li v-for="product in explorer.products.value" :key="product.Id">
+        <span class="product-item">
+          <i class="las la-box"></i>
+          {{ product.Name }}           
+        </span>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script setup>
@@ -22,3 +26,41 @@ function forwardFolderSelected(folderId) {
   emit('folderSelected', folderId);
 }
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  position: relative;
+  padding-right: 150px;
+  
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background-color: #ccc;
+}
+
+.product-list {
+  list-style-type: none;
+  padding: 0;
+  margin-left: auto;
+}
+
+.product-item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  max-width: 200px;
+  background-color: blanchedalmond;
+}
+</style>

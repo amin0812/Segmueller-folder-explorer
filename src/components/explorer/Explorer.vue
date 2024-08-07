@@ -11,7 +11,6 @@
     </ul>
       <!-- Product Details -->
       <div v-if="selectedProduct" class="product-details">
-        <h2>{{ selectedProduct.Name }}</h2>
         <div v-html="selectedProduct.detailsHtml"></div>
       </div>
   </div>
@@ -80,19 +79,5 @@ function forwardFolderSelected(folderId) {
   background-color: blanchedalmond;
 }
 
-/* Add styles for the product details section */
-.product-section {
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px; /* Adjust based on your layout */
-}
-
-.product-details {
-  margin-top: 20px;
-}
-
-.product-details h2 {
-  margin: 0;
-}
 
 </style>

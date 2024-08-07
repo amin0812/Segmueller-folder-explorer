@@ -3,24 +3,40 @@
     <Folders :folders="explorer.folders" :explorer="explorer" @folderSelected="forwardFolderSelected" />
     <ul class="product-list">
       <li v-for="product in explorer.products.value" :key="product.Id">
-        <span class="product-item">
+        <span class="product-item" @click="selectProduct(product)">
           <i class="las la-box"></i>
           {{ product.Name }}           
         </span>
       </li>
     </ul>
+      <!-- Product Details -->
+      <div v-if="selectedProduct" class="product-details">
+        <h2>{{ selectedProduct.Name }}</h2>
+        <div v-html="selectedProduct.detailsHtml"></div>
+      </div>
   </div>
 </template>
 
 <script setup>
 import Folders from './components/Folders.vue';
 import Explorer from './classes/Explorer';
-import { defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits, ref } from 'vue';
 
 const props = defineProps(["server"]);
 const explorer = new Explorer(props.server);
 
 const emit = defineEmits(['folderSelected']);
+
+// Add this ref to manage the selected product
+const selectedProduct = ref(null);
+
+// Add this method to handle product selection
+function selectProduct(product) {
+  selectedProduct.value = product;
+  console.log('Selected product:', product); // Log the selected product to the console
+
+}
+
 
 function forwardFolderSelected(folderId) {
   emit('folderSelected', folderId);
@@ -63,4 +79,20 @@ function forwardFolderSelected(folderId) {
   max-width: 200px;
   background-color: blanchedalmond;
 }
+
+/* Add styles for the product details section */
+.product-section {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px; /* Adjust based on your layout */
+}
+
+.product-details {
+  margin-top: 20px;
+}
+
+.product-details h2 {
+  margin: 0;
+}
+
 </style>

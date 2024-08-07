@@ -23,7 +23,33 @@ export default class MockGenerator {
     return {
       Id: this.randomString(4),
       Name: this.randomString(10),
-      CategoryId: categoryId
+      CategoryId: categoryId,
+      image1AltText: this.randomString(10),
+      Text: this.randomString(10),
+      text1: this.randomString(10),
+      link1Text: this.randomString(10),
+      text4: this.randomString(10),
+      text8: this.randomString(10),
+      image2ImageUrl: this.randomString(10),
+      image1Link: this.randomString(10),
+      additionalData4: this.randomString(10),
+      text6: this.randomString(10),
+      additionalData1: this.randomString(10),
+      text10: this.randomString(10),
+      link2text: this.randomString(10),
+      additionalData3: this.randomString(10),
+      text9: this.randomString(10),
+      image2AltText: this.randomString(10),
+      category: this.randomString(10),
+      link2Url: this.randomString(10),
+      text3: this.randomString(10),
+      image2Link: this.randomString(10),
+      image1ImageUrl: this.randomString(10),
+      additionalData2: this.randomString(10),
+      link1Url: this.randomString(10),
+      text2: this.randomString(10),
+      text7: this.randomString(10),
+      text5: this.randomString(10)
     }
   }
 
